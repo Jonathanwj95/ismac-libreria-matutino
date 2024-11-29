@@ -17,8 +17,8 @@ public class AutorDAOPrincipal {
         AutorDAO autorDAO = context.getBean("autorDAOImpl", AutorDAO.class);
 
         // INSERT (Crear un nuevo autor)
-        //Autor autor = new Autor(0, "J.K. Rowling", "Rowling", "Reino Unido", "Londres", "123456789", "jk.rowling@email.com");
-        //autorDAO.add(autor);  // Descomentar para insertar el autor en la base de datos
+        Autor autor = new Autor(0, "J.K. Rowling", "Rowling", "Reino Unido", "Londres", "123456789", "jk.rowling@email.com");
+        autorDAO.add(autor);  // Descomentar para insertar el autor en la base de datos
 
         // UPDATE (Actualizar un autor existente)
         //Autor autor2 = new Autor(1, "George R.R. Martin", "Martin", "EE.UU.", "Santa Fe", "987654321", "george.martin@email.com");
