@@ -9,53 +9,56 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.distribuida.entities.Factura;
+import com.distribuida.entities.FacturaDetalle;
 
 
 @Repository
-public class FacturaDAOImpl implements FacturaDAO {
-
+public class FacturaDetalleDAOImpl implements FacturaDetalleDAO {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
+
 	@Override
-	@Transactional
-	public List<Factura> findAll() {
-		// TODO Auto-generated method stub
+	@Transactional 
+	public List<FacturaDetalle> findAll() {
+		
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("FROM Factura", Factura.class).getResultList();
+		return session.createQuery("FROM FacturaDetalle", FacturaDetalle.class).getResultList();
 	}
 
 	@Override
-	@Transactional
-	public Factura findOne(int id) {
-		// TODO Auto-generated method stub
+	@Transactional 
+	public FacturaDetalle findOne(int id) {
+		
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Factura.class, id);
+		return session.get(FacturaDetalle.class, id); 
 	}
-	@Transactional
+
 	@Override
-	public void add(Factura factura) {
-		// TODO Auto-generated method stub
+	@Transactional 
+	public void add(FacturaDetalle facturadetalle) {
+		
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(factura);
+		session.saveOrUpdate(facturadetalle);
 
 	}
 
-	@Transactional
 	@Override
-	public void up(Factura factura) {
+	@Transactional 
+	public void up(FacturaDetalle facturadetalle) {
+		
 		Session session = sessionFactory.getCurrentSession();
-		// TODO Auto-generated method stub
-		session.saveOrUpdate(factura);
+		session.saveOrUpdate(facturadetalle);
 
 	}
-	
-	@Transactional
+
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
+	@Transactional 
+	public void del(int id) {
+		
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(findOne(id));
+
 	}
 
 }

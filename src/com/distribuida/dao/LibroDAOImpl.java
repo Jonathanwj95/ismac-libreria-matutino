@@ -9,53 +9,58 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.distribuida.entities.Factura;
-
+import com.distribuida.entities.Libro;
 
 @Repository
-public class FacturaDAOImpl implements FacturaDAO {
+public class LibroDAOImpl implements LibroDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Override
-	@Transactional
-	public List<Factura> findAll() {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("FROM Factura", Factura.class).getResultList();
-	}
 
 	@Override
 	@Transactional
-	public Factura findOne(int id) {
-		// TODO Auto-generated method stub
+	public List<Libro> findAll() {
+		
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Factura.class, id);
+		return session.createQuery("FROM Libro", Libro.class).getResultList();
+		
 	}
-	@Transactional
+
 	@Override
-	public void add(Factura factura) {
-		// TODO Auto-generated method stub
+	@Transactional 
+	public Libro findOne(int id) {
+		
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(factura);
+		return session.get(Libro.class, id); 
+	}
+
+	@Override
+	@Transactional 
+	public void add(Libro libro) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(libro);
+
 
 	}
 
-	@Transactional
 	@Override
-	public void up(Factura factura) {
+	@Transactional 
+	public void up(Libro libro) {
+		
 		Session session = sessionFactory.getCurrentSession();
-		// TODO Auto-generated method stub
-		session.saveOrUpdate(factura);
+		session.saveOrUpdate(libro);
+
 
 	}
-	
-	@Transactional
+
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
+	@Transactional 
+	public void del(int id) {
+		
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(findOne(id));
+
 	}
 
 }

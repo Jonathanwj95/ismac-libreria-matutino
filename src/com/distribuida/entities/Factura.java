@@ -14,29 +14,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "factura")
+
 public class Factura {
 	
-	// SQL:      1:1    <=> Java @OneToOne
-	//SQL: 1:N <=> Java: @OneToMany, @ManyToOne
+	//SQL: 1:1 <=> Java: @OneToOne 
+	//SQL: 1:N <=> Java: @ManyToOne , OneToMany
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_factura")
-	private int idFactura;
-	@Column(name = "num_factura")
+	private int idFactura; 
+	@Column(name = "num_Factura")
 	private String numFactura;
 	@Column(name = "fecha")
 	private Date fecha;
-	@Column(name = "total_neto")
+	@Column(name = "total_Neto")
 	private Double totalNeto;
 	@Column(name = "iva")
 	private Double iva;
 	@Column(name = "total")
 	private Double total;
-	// private int idCliente;
-	@JoinColumn(name = "id_cliente")
-	@ManyToOne(cascade = {CascadeType.DETACH.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	private Cliente cliente;
+	
+	//private int idCliente; foreing key
+	
+	@JoinColumn (name= "id_cliente")
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	private Cliente cliente; 
 	
 	public Factura() {}
 
@@ -103,8 +106,8 @@ public class Factura {
 	public Cliente getCliente() {
 		return cliente;
 	}
-
-	// metodo inyector 
+	//metedo inyector
+	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
@@ -114,6 +117,5 @@ public class Factura {
 		return "Factura [idFactura=" + idFactura + ", numFactura=" + numFactura + ", fecha=" + fecha + ", totalNeto="
 				+ totalNeto + ", iva=" + iva + ", total=" + total + ", cliente=" + cliente + "]";
 	}
-	
-	
+		
 }
