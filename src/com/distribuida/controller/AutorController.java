@@ -44,7 +44,7 @@ public class AutorController {
 
         if (opcion == 1) return "autores-add";
         else return "autores-del";
-    }
+    }  
 
    
     @PostMapping("/add")
